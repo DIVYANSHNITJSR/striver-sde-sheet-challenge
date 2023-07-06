@@ -1,0 +1,91 @@
+Node *rotate(Node *head, int k) {
+
+ 
+
+     int totalNodes = 0;
+
+     
+
+     vector<int> ans;
+
+     int cnt = 0;
+
+     Node *temp = head;
+
+ 
+
+     while(temp) {
+
+          totalNodes++;
+
+          temp = temp->next;
+
+     }
+
+ 
+
+     temp = head;
+
+ 
+
+     k = k % totalNodes;
+
+ 
+
+     k = totalNodes - k;
+
+ 
+
+     while(temp) {
+
+          if(cnt == k) break;
+
+          ans.push_back(temp->data);
+
+          cnt++;
+
+          temp = temp->next;
+
+     }
+
+ 
+
+     if(temp == NULL) return head;
+
+ 
+
+     Node *ind = head;
+
+ 
+
+     while(temp) {
+
+          ind->data = temp->data;
+
+          ind = ind->next;
+
+          temp = temp->next;
+
+     }
+
+ 
+
+     cnt = 0;
+
+ 
+
+     while(ind) {
+
+          ind->data = ans[cnt++];
+
+          ind = ind->next;
+
+     }
+
+ 
+
+     return head;
+
+ 
+
+}
