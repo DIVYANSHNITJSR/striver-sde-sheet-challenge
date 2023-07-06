@@ -1,0 +1,67 @@
+Node* findIntersection(Node*head){
+
+ 
+
+    if(head == NULL) return NULL;
+
+ 
+
+        Node* slow = head;
+
+        Node* fast = head;
+
+ 
+
+        while( fast!=NULL  &&  fast->next!=NULL ){
+
+            fast = fast->next->next;
+
+            slow = slow->next;
+
+            if(slow == fast){
+
+                return slow;
+
+            }
+
+        }
+
+        return NULL;
+
+}
+
+ 
+
+Node *firstNode(Node *head){
+
+    if(head == NULL)return NULL;
+
+ 
+
+    Node* meetPoint = findIntersection(head);
+
+ 
+
+    if(meetPoint == NULL){
+
+        return NULL;
+
+    }
+
+ 
+
+    Node* slow = head;                  //Re-assigning the slow to head
+
+    while(slow!= meetPoint){
+
+        slow = slow->next;
+
+        meetPoint = meetPoint->next;
+
+    }
+
+ 
+
+    return slow;
+
+}
